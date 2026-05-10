@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>For My Princess 💌</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Great+Vibes&family=Caveat:wght@400;700&family=Sacramento&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    overflow:hidden;
+    font-family:'Poppins',sans-serif;
+    background:black;
+}
+
+.slider{
+    display:flex;
+    width:700vw;
+    height:100vh;
+    transition:transform 1.1s cubic-bezier(0.77,0,0.175,1);
+}
+
+.page{
+    width:100vw;
+    height:100vh;
+    position:relative;
+    flex-shrink:0;
+    overflow:hidden;
+}
+
+.page::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        to top,
+        rgba(0,0,0,0.65),
+        rgba(0,0,0,0.15)
+    );
+}
+
+.page img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    filter:brightness(0.68);
+    animation:slowZoom 14s ease-in-out infinite alternate;
+}
+
+.overlay{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    text-align:center;
+    padding:20px;
+    z-index:5;
+}
+
+.text{
+    font-size:2rem;
+    max-width:850px;
+    line-height:1.5;
+    animation:fadeUp 2s ease;
+    text-shadow:0 0 18px rgba(255,255,255,0.35);
+    font-family:'Caveat',cursive;
+    letter-spacing:1px;
+}
+
+.swipe{
+    position:absolute;
+    bottom:28px;
+    font-size:1rem;
+    opacity:0.85;
+    animation:float 2s infinite;
+    letter-spacing:2px;
+}
+
+.final-title{
+    font-family:'Sacramento',cursive;
+    font-size:6rem;
+    margin-bottom:35px;
+    animation:pulseGlow 2.5s infinite;
+    text-shadow:0 0 25px rgba(255,105,180,0.7);
+}
+
+.buttons{
+    display:flex;
+    gap:22px;
+}
+
+button{
+    border:none;
+    padding:16px 38px;
+    border-radius:100px;
+    font-size:1.1rem;
+    cursor:pointer;
+    transition:0.35s;
+    font-weight:600;
+    backdrop-filter:blur(10px);
+}
+
+.yes{
+    background:linear-gradient(135deg,#ff4d88,#ff85a2);
+    color:white;
+    box-shadow:0 0 25px rgba(255,77,136,0.6);
+}
+
+.no{
+    background:rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.3);
+    color:white;
+}
+
+button:hover{
+    transform:scale(1.12);
+}
+
+.heart{
+    position:absolute;
+    color:white;
+    animation:fall linear infinite;
+    opacity:0.7;
+    z-index:20;
+    pointer-events:none;
+}
+
+.sparkle{
+    position:absolute;
+    width:4px;
+    height:4px;
+    background:white;
+    border-radius:50%;
+    opacity:0.7;
+    animation:twinkle 2s infinite alternate;
+}
+
+.daisy{
+    position:absolute;
+    font-size:24px;
+    animation:floatFlower 8s linear infinite;
+    opacity:0.7;
+}
+
+.gif-sticker{
+    position:absolute;
+    width:120px;
+    z-index:10;
+    opacity:0.9;
+}
+
+.jolli{
+    bottom:40px;
+    right:20px;
+}
+
+.daisy-gif{
+    top:30px;
+    left:20px;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(35px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes float{
+    0%{transform:translateX(0);}
+    50%{transform:translateX(10px);}
+    100%{transform:translateX(0);}
+}
+
+@keyframes fall{
+    from{
+        transform:translateY(-10vh);
+    }
+    to{
+        transform:translateY(110vh);
+    }
+}
+
+@keyframes pulseGlow{
+    0%{
+        transform:scale(1);
+        text-shadow:0 0 20px rgba(255,105,180,0.5);
+    }
+
+    50%{
+        transform:scale(1.03);
+        text-shadow:0 0 40px rgba(255,105,180,1);
+    }
+
+    100%{
+        transform:scale(1);
+        text-shadow:0 0 20px rgba(255,105,180,0.5);
+    }
+}
+
+@keyframes slowZoom{
+    from{
+        transform:scale(1);
+    }
+    to{
+        transform:scale(1.08);
+    }
+}
+
+@keyframes twinkle{
+    from{
+        opacity:0.2;
+        transform:scale(1);
+    }
+    to{
+        opacity:1;
+        transform:scale(1.7);
+    }
+}
+
+@keyframes floatFlower{
+    from{
+        transform:translateY(110vh) rotate(0deg);
+    }
+    to{
+        transform:translateY(-120vh) rotate(360deg);
+    }
+}
+
+@media(max-width:768px){
+
+.text{
+    font-size:1.55rem;
+}
+
+.final-title{
+    font-size:3.8rem;
+}
+
+button{
+    padding:13px 28px;
+}
+
+.gif-sticker{
+    width:85px;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<audio autoplay loop id="bgmusic">
+    <source src="pasilyo.mp3" type="audio/mp3">
+</audio>
+
+<div class="slider" id="slider">
+
+    <!-- PAGE 1 -->
+    <section class="page">
+        <img src="image/1.png">
+
+        <img class="gif-sticker daisy-gif" src="https://media.tenor.com/ZtC4u2m8W0UAAAAi/daisy-flower.gif">
+
+        <div class="overlay">
+            <div class="text"><br><br><br><br>
+                Before you, flowers were just flowers.
+                Now everything reminds me of you. <br>
+                
+                here princess, i gift you some daisies.
+            </div>
+
+            <div class="swipe">Swipe Right ➜</div>
+        </div>
+    </section>
+
+    <!-- PAGE 2 -->
+    <section class="page">
+        <img src="image/2.jpg">
+
+        <img class="gif-sticker jolli" src="https://media.tenor.com/4R8K0oJ1b2MAAAAi/cute-love.gif">
+
+        <div class="overlay">
+            <div class="text">
+                One day,
+I’m taking you on the cutest Jollibee date ever.
+            </div>
+
+            <div class="swipe">Swipe Right ➜</div>
+        </div>
+    </section>
+
+    <!-- PAGE 3 -->
+    <section class="page">
+        <img src="image/3.jpeg">
+
+        <div class="overlay">
+            <div class="text"> <br><br><br><br>
+                I think this is the moment <br>
+I realized I’d smile at literally anything you do.<br>
+And somehow…<br>
+even your weird faces are adorable to me.
+
+.
+            </div>
+
+            <div class="swipe">Swipe Right ➜</div>
+        </div>
+    </section>
+
+    <!-- PAGE 4 -->
+    <section class="page">
+        <img src="image/4.jpeg">
+
+        <div class="overlay">
+            <div class="text"><br><br><br><br><br><br><br><br><br><br><br>
+                I don't know how you did it,<br>
+                but you made my heart feel safe again.<br>
+                and you became my fav notification ever since.
+            </div>
+
+            <div class="swipe">Swipe Right ➜</div>
+        </div>
+    </section>
+
+    <!-- PAGE 5 -->
+    <section class="page">
+        <img src="image/5.jpeg">
+
+        <div class="overlay">
+            <div class="text"><br><br><br><br>
+                And honestly...<br>
+                I want more moments with you.<br>
+                apparently life is too short to wait for right time.
+            </div>
+
+            <div class="swipe">Swipe Right ➜</div>
+        </div>
+    </section>
+
+    <!-- PAGE 6 -->
+    <section class="page">
+        <img src="image/6.jpeg">
+
+        <div class="overlay">
+            <div class="text"><br><br><br><br>
+                More late night talks.<br>
+                More laughs.<br>
+                More us.
+            </div>
+
+            <div class="swipe">Swipe Right ➜</div>
+        </div>
+    </section>
+
+    <!-- FINAL PAGE -->
+    <section class="page">
+        <img src="image/7.png">
+
+        <div class="overlay">
+
+            <div class="final-title" id="question"><br><br><br>
+                Can I court you, my princess? 💖
+            </div>
+
+            <div class="buttons">
+                <button class="yes" onclick="sendYes()">Yes 💌</button>
+                <button class="no" onclick="changeQuestion()">No 🙈</button>
+            </div>
+
+            <p style="
+            margin-top:20px;
+            font-family:Caveat;
+            font-size:1.5rem;
+            opacity:0.9;
+            animation:fadeUp 3s ease;
+            ">
+            my heart already chose you long ago.
+            </p>
+
+        </div>
+    </section>
+
+</div>
+
+<script>
+
+const music = document.getElementById("bgmusic");
+
+document.body.addEventListener('click', () => {
+    music.play();
+}, { once: true });
+
+let currentPage = 0;
+const slider = document.getElementById("slider");
+
+document.addEventListener("click", () => {
+    if(currentPage < 6){
+        currentPage++;
+        slider.style.transform = `translateX(-${currentPage * 100}vw)`;
+    }
+});
+
+let noCount = 0;
+
+const questions = [
+    "Can I court you, my princess? 💖",
+    "Can I court you pls 🥺",
+    "Can I court you pls pls 💗",
+    "Pleaseeeee let me court you 😭💞",
+    "I promise I'll adore you forever 🫶",
+    "Say yes princessss 💌"
+];
+
+function changeQuestion(){
+
+    noCount++;
+
+    if(noCount >= questions.length){
+        noCount = questions.length - 1;
+    }
+
+    document.getElementById("question").innerText = questions[noCount];
+}
+
+function sendYes(){
+
+    const webhookURL = "PASTE_YOUR_DISCORD_WEBHOOK_HERE";
+
+    fetch(webhookURL,{
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+            content:"SHE SAID YESSSSS 💖💖💖"
+        })
+    });
+
+    document.body.innerHTML = `
+    <div style="
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:black;
+    color:white;
+    flex-direction:column;
+    font-family:Poppins;
+    text-align:center;
+    padding:20px;
+    overflow:hidden;
+    ">
+
+        <h1 style="
+        font-size:5rem;
+        font-family:Sacramento;
+        animation:pulseGlow 2s infinite;
+        ">
+        AHHHHH 💖
+        </h1>
+
+        <p style="
+        font-size:1.8rem;
+        margin-top:20px;
+        font-family:Caveat;
+        ">
+        You just made my entire universe happy.
+        </p>
+
+    </div>
+    `;
+}
+
+// floating hearts
+setInterval(() => {
+
+    const heart = document.createElement("div");
+
+    heart.classList.add("heart");
+
+    const hearts = ["💖","💗","💞","💕","💘"];
+
+    heart.innerHTML = hearts[Math.floor(Math.random()*hearts.length)];
+
+    heart.style.left = Math.random() * 100 + "vw";
+
+    heart.style.fontSize = Math.random() * 22 + 14 + "px";
+
+    heart.style.animationDuration = Math.random() * 4 + 4 + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    },7000);
+
+},220);
+
+
+// sparkles
+setInterval(() => {
+
+    const sparkle = document.createElement("div");
+
+    sparkle.classList.add("sparkle");
+
+    sparkle.style.left = Math.random()*100+"vw";
+    sparkle.style.top = Math.random()*100+"vh";
+
+    document.body.appendChild(sparkle);
+
+    setTimeout(()=>{
+        sparkle.remove();
+    },2000);
+
+},120);
+
+
+// floating daisies
+setInterval(() => {
+
+    const daisy = document.createElement("div");
+
+    daisy.classList.add("daisy");
+
+    daisy.innerHTML = "🌼";
+
+    daisy.style.left = Math.random()*100+"vw";
+
+    daisy.style.fontSize = Math.random()*20 + 20 + "px";
+
+    document.body.appendChild(daisy);
+
+    setTimeout(()=>{
+        daisy.remove();
+    },8000);
+
+},1800);
+
+</script>
+
+</body>
+</html>
